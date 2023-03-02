@@ -15,12 +15,9 @@
 1. Deploy the application on a Kubernetes cluster running in <> provider. 
 1. The provisioning of the cluster as well as deployment of the application must be done through code.
 
+## How it Run
 
-## Presentation/Demo
-1. Objectives
-1. Tools I used and why
-1. Isuses
-1. Lessons learned
-1. Demo
-1. Questions
+## What is running
+
+## Cleanup
 
