@@ -1,4 +1,4 @@
-# Liatrio-Interview
+# Build an Application
 
 ## Objective
 1. Build an application in <> that exposes a REST endpoint that returns the following JSON payload.
