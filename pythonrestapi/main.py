@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask
 import json,time
 
 app = Flask(__name__)
@@ -11,4 +11,4 @@ def home():
     return json_dump
 
 if __name__ == '__main__':
-    app.run(port=5849)
+    app.run(host='0.0.0.0')

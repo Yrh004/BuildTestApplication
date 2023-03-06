@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonrestapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pythonrestapi-label
+  template:
+    metadata:
+      labels:
+        app: pythonrestapi-label
+    spec:
+      containers:
+      - name: pythonrestapi-container
+        image: yhines/pythonrestapi
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
