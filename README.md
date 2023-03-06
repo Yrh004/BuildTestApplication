@@ -16,6 +16,7 @@
 1. The provisioning of the cluster as well as deployment of the application must be done through code.
 
 ## How it Run
+My python script has a GET request to my application and then my application return a JSON dump to the HTTP. My test case checks if the JSON dump contains 'Message".
 
 ## What is running
 
