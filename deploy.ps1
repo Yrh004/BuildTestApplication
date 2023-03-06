@@ -1,3 +1,2 @@
-#Commands
+# Deploy App in Kubernetes
 
-# Run Docker Image
