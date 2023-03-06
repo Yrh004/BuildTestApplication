@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: pythonrestapi-service
   labels: 
-    app: pythonrestapi-label
+    app: pythonrestapi
 spec:
   ports:
   - port: 5000
     targetPort: 5000
   selector:
-    app: pythonrestapi-label
+    app: pythonrestapi
