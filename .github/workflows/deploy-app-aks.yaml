@@ -39,7 +39,7 @@ jobs:
       - name: Build, tag, and push image to Docker
         run: |
           docker build -t yhines/pythonrestapi:0.0.2 ./pythonrestapi
-          docker push -a yhines/pythonrestapi:0.0.2
+          docker push -a/-all-tags yhines/pythonrestapi:0.0.2
 
       # Deploy Docker image in my AKS cluster
       - name: Deployment
