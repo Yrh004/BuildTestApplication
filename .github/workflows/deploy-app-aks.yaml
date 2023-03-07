@@ -1,3 +1,10 @@
+############################################
+#  Deploy App to AKS using GitHub Actions  #
+#           By: Yasmine Hines              #
+#            Date: 1/5/2023                #
+#                                          #
+############################################
+
 name: Deploy App to AKS
 
 on:
@@ -45,4 +52,3 @@ jobs:
       #   run: |
       #     kubectl apply -f pythonrestapi-deployment.yaml
       #     kubectl apply -f pythonrestapi-service.yaml
-      
