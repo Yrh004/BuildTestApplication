@@ -22,6 +22,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Install kubectl to use for deploying app to Aks
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.21.3'
+        id: install
+
       # Log in with your Azure credentials
       - name: Azure login
         uses: azure/login@v1.4.6
