@@ -2,9 +2,9 @@ name: Deploy App to AKS
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-    - deployment
+  # push:
+  #   branches:
+  #   - deployment
 
 env:
   RESOURCE_GROUP: "Demo_Resoure_Group"
@@ -12,7 +12,7 @@ env:
 
 
 jobs:
-  buildImage:
+  deployAppToAks:
     permissions:
       contents: read
       id-token: write
