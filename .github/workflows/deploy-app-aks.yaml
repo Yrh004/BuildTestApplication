@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    runs-on: demo-runner
+    runs-on: [self-hosted, macOS, X64 ]
     steps:
       - uses: actions/checkout@v3
 
