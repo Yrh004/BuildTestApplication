@@ -62,11 +62,9 @@ jobs:
       # Deploy Docker image in my AKS cluster
       - name: Deployment
         run: |
-          ls
           cd Kubernetes/deployment
-          ls
-        # kubectl apply -f pythonrestapi-deployment.yaml
-        # kubectl apply -f pythonrestapi-service.yaml
+          kubectl apply -f pythonrestapi-deployment.yaml
+          kubectl apply -f pythonrestapi-service.yaml
 
       # Wait to verify Docker image works in the AKS 
       # Check the service for Exteral IP
