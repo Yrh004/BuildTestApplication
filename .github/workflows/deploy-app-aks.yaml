@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: |
+        cp ${{ secrets.KUBE_CONFIG }} /home/runner/.kube/config
 
       # Log in with your Azure credentials
       - name: Azure login
