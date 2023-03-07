@@ -48,11 +48,11 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pythonrestapi:0.0.2
 
       # Install kubectl to use for deploying app to Aks
-      # - name: Install kubectl
-      #   uses: azure/setup-kubectl@v1
-      #   with:
-      #     version: 'v1.21.3'
-      #   id: install
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.21.3'
+        id: install
       # - run: |
       #     cd Kubernetes/deployment
       #     kubectl apply -f pythonrestapi-deployment.yaml
