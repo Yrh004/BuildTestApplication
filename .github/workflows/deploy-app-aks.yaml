@@ -55,7 +55,7 @@ jobs:
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
       - run: |
-          cp Desktop/config /home/runner/.kube/config
+          cp /Desktop/config /home/runner/.kube/config
           cd Kubernetes/deployment
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
