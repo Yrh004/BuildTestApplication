@@ -75,9 +75,9 @@ jobs:
       #     kubectl get svc pythonrestapi-service -n default \
       #     -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
 
-  cleanUp:
+  # cleanUp:
       # Cleanup K8 cluster
-      - name: Cleanup
-        run: |
-          kubectl delete services pythonrestapi-service
-          kubectl delete deployment pythonrestapi-deploy
+      # - name: Cleanup
+      #   run: |
+      #     kubectl delete services pythonrestapi-service
+      #     kubectl delete deployment pythonrestapi-deploy
