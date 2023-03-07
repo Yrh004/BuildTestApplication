@@ -7,16 +7,14 @@
 name: Deploy App to AKS
 
 on:
-  push:
-    branches:
-    - deployment
+  # push:
+  #   branches:
+  #   - deployment
+  workflow_dispatch:
 
 jobs:
   deployAppToAks:
-    permissions:
-      contents: read
-      id-token: write
-    runs-on: [self-hosted, macOS, X64 ]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -47,17 +45,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pythonrestapi:0.0.2
 
-      # Install kubectl to use for deploying app to Aks
-      - name: Install kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: 'v1.21.3'
-        id: install
-      # - run: |
-      #     cd Kubernetes/deployment
-      #     kubectl apply -f pythonrestapi-deployment.yaml
-      #     kubectl apply -f pythonrestapi-service.yaml
-
       # Deploy Docker image in my AKS cluster
       - uses: tale/kubectl-action@v1
         with:
@@ -66,13 +53,6 @@ jobs:
           kubectl apply -f /Kubernetes/deployment/pythonrestapi-deployment.yaml
           kubectl apply -f /Kubernetes/deployment/pythonrestapi-service.yaml
           service = kubectl get svc pythonrestapi-service -n default \ -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
-      # Wait to verify Docker image works in the AKS 
-      # Check the service for Exteral IP
-      # - name: Check/Test
-      #   run: |
-      #     kubectl get svc
-      #     kubectl get svc pythonrestapi-service -n default \
-      #     -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
 
   # cleanUp:
       # Cleanup K8 cluster
