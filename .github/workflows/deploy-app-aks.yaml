@@ -41,6 +41,7 @@ jobs:
       # Build the python app into a Docker image
       - name: Build, tag, and push image to Docker
         run: |
+          cd ./Kubernetes/deployment
           ls 
           # docker build -t yhines/pythonrestapi:0.0.2 ./Kubernetes/deployment
           # docker push -a yhines/pythonrestapi:0.0.2
