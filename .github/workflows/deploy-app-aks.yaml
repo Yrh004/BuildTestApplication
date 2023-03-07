@@ -7,10 +7,9 @@
 name: Deploy App to AKS
 
 on:
-  # push:
-  #   branches:
-  #   - deployment
-  workflow_dispatch:
+  push:
+    branches:
+    - deployment
 
 jobs:
   deployAppToAks:
