@@ -1,7 +1,7 @@
 name: Deploy App to AKS
 
 on:
-  workflow_dispatch:
+  workflow_call:
   # push:
   #   branches:
   #   - deployment
