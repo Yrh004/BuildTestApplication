@@ -1,0 +1,53 @@
+name: Deploy App to AKS
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - deployment
+
+env:
+  RESOURCE_GROUP: "Demo_Resoure_Group"
+  CLUSTER_NAME: "demoAKSCluster"
+
+
+jobs:
+  buildImage:
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.21.3'
+        id: install
+
+      - name: Azure login
+        uses: azure/login@v1.4.6
+        with: 
+          client_id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      
+      - name: Azure CLI Action
+        uses: Azure/cli@v1.0.7
+        with:
+          # Specify the script here
+          inlineScript: |
+            az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            az aks get-credentials --resource-group Demo_Resoure_Group --name demoAKSCluster
+
+
+      # - name: Build, tag, and push image to Docker
+      #   run: |
+      #     docker build -t yhines/pythonrestapi:0.0.2 ./Kubernetes/deployment
+      #     docker push -a yhines/pythonrestapi:0.0.2
+
+      # - name: Deployment
+      #   run: |
+      #     kubectl apply -f pythonrestapi-deployment.yaml
+      #     kubectl apply -f pythonrestapi-service.yaml

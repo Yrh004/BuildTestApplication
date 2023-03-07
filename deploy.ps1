@@ -1,2 +1,0 @@
-# Deploy App in Kubernetes
-
