@@ -2,7 +2,6 @@
 #  Deploy App to AKS using GitHub Actions  #
 #           By: Yasmine Hines              #
 #            Date: 1/5/2023                #
-#                                          #
 ############################################
 
 name: Deploy App to AKS
@@ -21,6 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+
+
+
+      # Install kubectl to use for deploying app to Aks
       - name: Install kubectl
         uses: azure/setup-kubectl@v1
         with:
@@ -34,18 +37,25 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      - run: |
-          az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          az aks get-credentials --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --name ${{ secrets.AZURE_AKS_CLUSTER }}
 
-      # - name: Build, tag, and push image to Docker
-      #   run: |
-      #     docker build -t yhines/pythonrestapi:0.0.2 ./Kubernetes/deployment
-      #     docker push -a yhines/pythonrestapi:0.0.2
+      # Build the python app into a Docker image
+      - name: Build, tag, and push image to Docker
+        run: |
+          ls 
+          # docker build -t yhines/pythonrestapi:0.0.2 ./Kubernetes/deployment
+          # docker push -a yhines/pythonrestapi:0.0.2
 
+      # Deploy Docker image in my AKS cluster
       # - name: Deployment
       #   run: |
       #     kubectl apply -f pythonrestapi-deployment.yaml
       #     kubectl apply -f pythonrestapi-service.yaml
 
-      - name: Cleanup
+
+      # Wait to verify Docker image works
+
+      # Cleanup K8 cluster
+      # - name: Cleanup
+      #   run: |
+      #     kubectl delete services pythonrestapi-service
+      #     kubectl delete deployment pythonrestapi-deploy
