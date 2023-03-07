@@ -55,10 +55,10 @@ jobs:
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
       - run: |
-          cp /Desktop/config /home/runner/.kube/config
+          cp ~/Desktop/config /home/runner/.kube/config
           cd Kubernetes/deployment
-          kubectl apply -f pythonrestapi-deployment.yaml
-          kubectl apply -f pythonrestapi-service.yaml
+          kubectl apply -f ~/Kubernetes/deployment/pythonrestapi-deployment.yaml
+          kubectl apply -f ~/Kubernetes/deployment/pythonrestapi-service.yaml
           sleep 45
           kubectl get svc pythonrestapi-service -n default \ -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
 
