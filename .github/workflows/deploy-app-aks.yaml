@@ -1,10 +1,9 @@
 name: Deploy App to AKS
 
-on: [workflow_dispatch]
-
-  # push:
-  #   branches:
-  #   - deployment
+on:
+  push:
+    branches:
+    - deployment
 
 env:
   RESOURCE_GROUP: "Demo_Resoure_Group"
