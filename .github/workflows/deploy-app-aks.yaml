@@ -62,7 +62,7 @@ jobs:
       # Deploy Docker image in my AKS cluster
       - name: Deployment
         run: |
-          cd ./Kubernetes.deployment
+          cd /Kubernetes/deployment
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
 
