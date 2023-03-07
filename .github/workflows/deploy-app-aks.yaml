@@ -19,9 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-
-
 
       # Install kubectl to use for deploying app to Aks
       - name: Install kubectl
@@ -41,19 +38,20 @@ jobs:
       # Build the python app into a Docker image
       - name: Build, tag, and push image to Docker
         run: |
-          cd ./Kubernetes/deployment
-          ls 
-          # docker build -t yhines/pythonrestapi:0.0.2 ./Kubernetes/deployment
-          # docker push -a yhines/pythonrestapi:0.0.2
+          docker build -t yhines/pythonrestapi:0.0.2 ./Kubernetes/deployment
+          docker push -a yhines/pythonrestapi:0.0.2
 
       # Deploy Docker image in my AKS cluster
-      # - name: Deployment
-      #   run: |
-      #     kubectl apply -f pythonrestapi-deployment.yaml
-      #     kubectl apply -f pythonrestapi-service.yaml
+      - name: Deployment
+        run: |
+          kubectl apply -f pythonrestapi-deployment.yaml
+          kubectl apply -f pythonrestapi-service.yaml
 
-
-      # Wait to verify Docker image works
+      # Wait to verify Docker image works in the AKS 
+      # Check the service for Exteral IP
+      - name: Check/Test
+        run: |
+          kubectl get svc
 
       # Cleanup K8 cluster
       # - name: Cleanup
