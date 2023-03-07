@@ -62,17 +62,19 @@ jobs:
       # Deploy Docker image in my AKS cluster
       - name: Deployment
         run: |
-          cd /Kubernetes/deployment
-          kubectl apply -f pythonrestapi-deployment.yaml
-          kubectl apply -f pythonrestapi-service.yaml
+          ls
+          cd Kubernetes/deployment
+          ls
+        # kubectl apply -f pythonrestapi-deployment.yaml
+        # kubectl apply -f pythonrestapi-service.yaml
 
       # Wait to verify Docker image works in the AKS 
       # Check the service for Exteral IP
-      - name: Check/Test
-        run: |
-          kubectl get svc
-          kubectl get svc pythonrestapi-service -n default \
-          -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
+      # - name: Check/Test
+      #   run: |
+      #     kubectl get svc
+      #     kubectl get svc pythonrestapi-service -n default \
+      #     -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
 
       # Cleanup K8 cluster
       # - name: Cleanup
