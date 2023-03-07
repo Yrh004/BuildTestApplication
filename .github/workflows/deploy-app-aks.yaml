@@ -1,10 +1,15 @@
 name: Deploy App to AKS
 
 on: 
-#[workflow_dispatch]
-  push:
-    branches:
-    - deployment
+  workflow_dispatch:
+  inputs:
+      name:
+        description: 'Python REST API App'
+        # Default value if no value is explicitly provided
+        default: 'World'
+  # push:
+  #   branches:
+  #   - deployment
 
 env:
   RESOURCE_GROUP: "Demo_Resoure_Group"
