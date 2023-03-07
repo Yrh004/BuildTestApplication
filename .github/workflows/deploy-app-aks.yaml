@@ -1,13 +1,6 @@
 name: Deploy App to AKS
 
-on: 
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Python REST API App'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        required: true
+on: [workflow_dispatch]
 
   # push:
   #   branches:
@@ -36,9 +29,7 @@ jobs:
       - name: Azure login
         uses: azure/login@v1.4.6
         with: 
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       # - name: Azure CLI Action
       #   uses: Azure/cli@v1.0.7
@@ -46,8 +37,7 @@ jobs:
       #     # Specify the script here
       #     inlineScript: |
       #       az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      #       az aks get-credentials --resource-group Demo_Resoure_Group --name demoAKSCluster
-
+      #       az aks get-credentials --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --name ${{ secrets.AZURE_AKS_CLUSTER }}
 
       # - name: Build, tag, and push image to Docker
       #   run: |
