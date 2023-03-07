@@ -35,13 +35,13 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      # - name: Azure CLI Action
-      #   uses: Azure/cli@v1.0.7
-      #   with:
-      #     # Specify the script here
-      #     inlineScript: |
-      #       az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      #       az aks get-credentials --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --name ${{ secrets.AZURE_AKS_CLUSTER }}
+      - name: Azure CLI Action
+        uses: Azure/cli@v1.0.7
+        with:
+          # Specify the script here
+          inlineScript: |
+            az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            az aks get-credentials --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --name ${{ secrets.AZURE_AKS_CLUSTER }}
 
       # - name: Build, tag, and push image to Docker
       #   run: |
