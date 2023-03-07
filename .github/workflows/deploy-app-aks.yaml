@@ -21,8 +21,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - run: |
-          ls
-          cp config.txt /home/runner/.kube/config
+          cp config /home/runner/.kube/config
 
       # Log in with your Azure credentials
       - name: Azure login
