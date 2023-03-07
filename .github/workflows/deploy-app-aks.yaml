@@ -65,8 +65,9 @@ jobs:
           ${{ secrets.DIRECTORY }}
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
-          sleep 45
-          kubectl get svc pythonrestapi-service -n default \ -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
+          # sleep 45
+          # kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
+          # kubectl get services -l component=controller,app=nginx-ingress -o jsonpath="{.items[0].status.loadBalancer.ingress[0].ip}"
 
       # Cleanup K8 cluster
       # - name: Cleanup
