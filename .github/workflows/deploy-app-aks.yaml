@@ -63,9 +63,8 @@ jobs:
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
       - run: |
-          cd Kubernetes/deployment
-          kubectl apply -f pythonrestapi-deployment.yaml
-          kubectl apply -f pythonrestapi-service.yaml
+          kubectl apply -f /Kubernetes/deployment/pythonrestapi-deployment.yaml
+          kubectl apply -f /Kubernetes/deployment/pythonrestapi-service.yaml
           service = kubectl get svc pythonrestapi-service -n default \ -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
       # Wait to verify Docker image works in the AKS 
       # Check the service for Exteral IP
