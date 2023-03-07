@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    runs-on: ubuntu-latest
+    runs-on: demo-runner
     steps:
       - uses: actions/checkout@v3
 
@@ -63,11 +63,10 @@ jobs:
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
       - run: |
-          cp config /home/runner/.kube/config
           cd Kubernetes/deployment
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
-
+          service = kubectl get svc pythonrestapi-service -n default \ -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
       # Wait to verify Docker image works in the AKS 
       # Check the service for Exteral IP
       # - name: Check/Test
@@ -76,8 +75,9 @@ jobs:
       #     kubectl get svc pythonrestapi-service -n default \
       #     -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
 
+  cleanUp:
       # Cleanup K8 cluster
-      # - name: Cleanup
-      #   run: |
-      #     kubectl delete services pythonrestapi-service
-      #     kubectl delete deployment pythonrestapi-deploy
+      - name: Cleanup
+        run: |
+          kubectl delete services pythonrestapi-service
+          kubectl delete deployment pythonrestapi-deploy
