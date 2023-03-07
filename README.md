@@ -12,6 +12,12 @@
   }
 ```
 
+## Overview of tools used
+1. Python
+1. Azure
+1. GitHub Actions
+1. VS Code
+
 1. Deploy the application on a Kubernetes cluster running in Azure public cloud provider. 
 1. The provisioning of the cluster as well as deployment of the application must be done through code.
 
