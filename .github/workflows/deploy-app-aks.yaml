@@ -9,7 +9,6 @@ env:
   RESOURCE_GROUP: "Demo_Resoure_Group"
   CLUSTER_NAME: "demoAKSCluster"
 
-
 jobs:
   deployAppToAks:
     permissions:
