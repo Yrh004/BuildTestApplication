@@ -2,11 +2,13 @@ name: Deploy App to AKS
 
 on: 
   workflow_dispatch:
-  inputs:
+    inputs:
       name:
         description: 'Python REST API App'
         # Default value if no value is explicitly provided
         default: 'World'
+        required: true
+
   # push:
   #   branches:
   #   - deployment
