@@ -55,12 +55,13 @@ jobs:
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
       - run: |
-          cp ../config /home/runner/.kube/config
-          cd Kubernetes/deployment
-          kubectl apply -f pythonrestapi-deployment.yaml
-          kubectl apply -f pythonrestapi-service.yaml
-          sleep 45
-          kubectl get svc pythonrestapi-service -n default \ -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
+          ls
+          # cp /config /home/runner/.kube/config
+          # cd Kubernetes/deployment
+          # kubectl apply -f pythonrestapi-deployment.yaml
+          # kubectl apply -f pythonrestapi-service.yaml
+          # sleep 45
+          # kubectl get svc pythonrestapi-service -n default \ -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
 
       # Cleanup K8 cluster
       # - name: Cleanup
