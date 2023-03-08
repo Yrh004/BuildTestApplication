@@ -24,5 +24,6 @@ jobs:
 
       - name: Cleanup AKS Cluster
         run: |
+          ${{ secrets.CONFIG }}
           kubectl delete services pythonrestapi-service
           kubectl delete deployment pythonrestapi-deploy
