@@ -2,7 +2,8 @@
 
 ## Objective
 1. Build an application in python that exposes a REST endpoint that returns the following JSON payload.
-
+1. Deploy the application on a Kubernetes cluster running in Azure public cloud provider. 
+1. The provisioning of the cluster as well as deployment of the application must be done through code.
 ```
   {
   
@@ -18,14 +19,22 @@
 1. GitHub Actions
 1. VS Code
 
-1. Deploy the application on a Kubernetes cluster running in Azure public cloud provider. 
-1. The provisioning of the cluster as well as deployment of the application must be done through code.
+# How it Run
+My python script has a GET request to my application and then my application return a JSON dump to the HTTP. My test case checks if the JSON dump contains 'Message". When it comes to building the Docker iamge of my app, I run the docker build and docker run command to verfiy that the Docker image actual returns the JSON.  
 
-## How it Run
-My python script has a GET request to my application and then my application return a JSON dump to the HTTP. My test case checks if the JSON dump contains 'Message". When it comes to building the Docker iamge of my app, I run the docker build and docker run command to verfiy that the Docker image actual returns the JSON  
+1. ## Steps of the GitHub Actions Deployment
+2. Log into Docker Hub
+2. Setup Docker Buildx
+2. Build and Push Docker Image
+2. Log into Azure
+2. Install kubectl
+2. Deploy Docker Image
+2. Verify App
+2. Cleanup AKS Cluster
 
-## What is running
+
+# What is running
 There's a python app that is running on a Docker image and the Docker image is deployed to an AKS cluster in Azure.
 
-## Cleanup
+# Cleanup
 The runner I'm using clean itself up from all the other steps, but at the end of the GitHub Actions pipeline, I delete the kubernetes service and deployment to take down the application.
