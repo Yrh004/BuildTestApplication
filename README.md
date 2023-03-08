@@ -1,7 +1,7 @@
 # Build an Application
 
-## MAINTAINER: Yasmine Hines
-## Last Update: 03/8/2023
+### MAINTAINER: Yasmine Hines
+### Last Update: 03/8/2023
 
 ## Objective
 1. Build an application in python that exposes a REST endpoint that returns the following JSON payload.
