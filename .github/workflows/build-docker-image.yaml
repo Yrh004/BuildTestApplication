@@ -45,6 +45,7 @@ jobs:
       id-token: write
     uses: Yrh004/BuildTestApplication/.github/workflows/deploy-app-aks.yaml@deployment
 
+  # Call the next workflow - Cleanup AKS Cluster
   callWorkflowCleanup:
     needs: callWorkflowDeploy
     permissions:

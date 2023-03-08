@@ -18,9 +18,6 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: |
-          pip install azure-cli
 
       # Install kubectl to use for deploying app to Aks
       - name: Install kubectl
@@ -47,6 +44,4 @@ jobs:
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
           sleep 45
-
-      # Call the next workflow - Cleanup AKS Cluster
   
