@@ -9,6 +9,7 @@ on:
   push:
     branches:
     - deployment
+  workflow_dispatch:
 
 jobs: 
   buildDockerImage:
@@ -36,8 +37,17 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pythonrestapi:0.0.2
 
       # Call the next workflow - Deploy App to AKS
-  call-workflow:
+  
+  callWorkflowDeploy:
+    needs: buildDockerImage
     permissions:
       contents: read
       id-token: write
-    uses: ./.github/workflows/deploy-app-aks.yaml
+    uses: Yrh004/BuildTestApplication/.github/workflows/deploy-app-aks.yaml@deployment
+
+  callWorkflowCleanup:
+    needs: callWorkflowDeploy
+    permissions:
+      contents: read
+      id-token: write
+    uses: Yrh004/BuildTestApplication/.github/workflows/cleanup-aks-cluster.yaml@deployment
