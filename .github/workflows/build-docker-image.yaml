@@ -67,7 +67,6 @@ jobs:
 
   # Call the next workflow - Cleanup AKS Cluster
   callWorkflowCleanup:
-    needs: callWorkflowDeploy
     permissions:
       contents: read
       id-token: write
