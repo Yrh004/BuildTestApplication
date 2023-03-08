@@ -32,8 +32,5 @@ My python script has a GET request to my application and then my application ret
   1. Verify App
   1. Cleanup AKS Cluster
 
-# What is running
-There's a python app that is running on a Docker image and the Docker image is deployed to an AKS cluster in Azure.
-
 # Cleanup
 The runner I'm using clean itself up from all the other steps, but at the end of the GitHub Actions pipeline, I delete the kubernetes service and deployment to take down the application.
