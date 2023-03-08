@@ -67,7 +67,6 @@ jobs:
           externalIp=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
           sleep 70s
           echo "http://$externalIp:80" 
-          curl "http://$externalIp:80" 
 
       - name: verifyApp
         run: |

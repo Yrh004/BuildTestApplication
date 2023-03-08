@@ -22,6 +22,17 @@
 ## How it Run
 My python script has a GET request to my application and then my application return a JSON dump to the HTTP. My test case checks if the JSON dump contains 'Message". When it comes to building the Docker iamge of my app, I run the docker build and docker run command to verfiy that the Docker image actual returns the JSON.  
 
+# Steps of the GitHub Actions Deployment
+1. Log into Docker Hub
+1. Setup Docker Buildx
+1. Build and Push Docker Image
+1. Log into Azure
+1. Install kubectl
+1. Deploy Docker Image
+1. Verify App
+1. Cleanup AKS Cluster
+
+
 ## What is running
 There's a python app that is running on a Docker image and the Docker image is deployed to an AKS cluster in Azure.
 
