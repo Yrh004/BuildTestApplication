@@ -3,7 +3,7 @@
 #           By: Yasmine Hines              #
 #            Date: 1/5/2023                #
 ############################################
-name: Cleanup
+name: Cleanup AKS Cluster
 
 on:
   workflow_call:

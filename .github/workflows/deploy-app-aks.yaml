@@ -1,9 +1,9 @@
 ############################################
-#  Deploy App to AKS using GitHub Actions  #
+#           Deploy App to AKS              #
 #           By: Yasmine Hines              #
 #            Date: 1/5/2023                #
 ############################################
-name: Deploy
+name: Deploy to AKS
 
 on:
   workflow_call:
