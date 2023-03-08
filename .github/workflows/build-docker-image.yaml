@@ -61,10 +61,20 @@ jobs:
           echo "http://$externalIP:80"
           curl "http://$externalIP:80"
 
-  # Call the next workflow - Cleanup AKS Cluster
-  # callWorkflowCleanup:
-  #   needs: buildAndDeploy
-  #   permissions:
-  #     contents: read
-  #     id-token: write
-  #   uses: Yrh004/BuildTestApplication/.github/workflows/cleanup-aks-cluster.yaml@deployment
+      - name: verifyApp
+        run: |
+          sleep 60s
+
+       # Install kubectl to use for deploying app to AKS
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.21.3'
+        id: install
+
+      - name: Cleanup AKS Cluster
+        run: |
+          ${{ secrets.CONFIG }}
+          kubectl cluster-info
+          # kubectl delete services pythonrestapi-service
+          # kubectl delete deployment pythonrestapi-deploy
