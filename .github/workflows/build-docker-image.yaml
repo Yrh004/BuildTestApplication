@@ -65,7 +65,7 @@ jobs:
           kubectl apply -f pythonrestapi-service.yaml
           externalIP=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
           port=$(kubectl describe service pythonrestapi-service | grep -i targetport)
-          curl http://$externalIP:80
+          curl "http://$externalIP:80"
 
   # Call the next workflow - Cleanup AKS Cluster
   callWorkflowCleanup:
