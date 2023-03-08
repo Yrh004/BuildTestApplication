@@ -39,13 +39,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pythonrestapi:0.0.2
 
-      # Install kubectl to use for deploying app to AKS
-      - name: Install kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: 'v1.21.3'
-        id: install
-
       # Log in with your Azure credentials
       - name: Azure login
         uses: azure/login@v1.4.6
