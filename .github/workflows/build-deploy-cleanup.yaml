@@ -58,12 +58,13 @@ jobs:
           kubectl apply -f pythonrestapi-service.yaml
           externalIP=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
           port=$(kubectl describe service pythonrestapi-service | grep -i targetport)
+          sleep 60s
           echo "http://$externalIP:80"
           curl "http://$externalIP:80"
 
       - name: verifyApp
         run: |
-          sleep 60s
+          sleep 90s
 
        # Install kubectl to use for deploying app to AKS
       - name: Install kubectl
