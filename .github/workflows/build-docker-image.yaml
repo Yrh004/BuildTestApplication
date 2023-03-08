@@ -10,9 +10,6 @@ on:
     branches:
     - deployment
 
-env: 
-  KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-
 jobs: 
   buildDockerImage:
     permissions:
@@ -41,3 +38,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pythonrestapi:0.0.2
 
+      # Call the next workflow - Deploy App to AKS
+      - call-workflow:
+        uses: BuildTestApplication/.github/workflows/deploy-app-aks.yaml@v1

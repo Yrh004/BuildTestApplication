@@ -7,8 +7,6 @@ name: Cleanup
 
 on:
   workflow_run:
-    workflows: [Deploy to AKS Cluster]
-    types: [completed]
 
 env: 
   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}

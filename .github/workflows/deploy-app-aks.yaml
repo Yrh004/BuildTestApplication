@@ -6,9 +6,7 @@
 name: Deploy
 
 on:
-  workflow_run:
-    workflows: [Build Docker Image]
-    types: [completed]
+  workflow_call:
 
 env: 
   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
@@ -47,4 +45,7 @@ jobs:
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
           sleep 45
-   
+
+      # Call the next workflow - Cleanup AKS Cluster
+      - call-workflow:
+        uses: BuildTestApplication/.github/workflows/cleanup-aks-cluster.yaml@v1
