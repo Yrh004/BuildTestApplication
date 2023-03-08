@@ -11,6 +11,10 @@ on:
 env: 
   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 
+permissions:
+      id-token: write
+      contents: read
+
 jobs:  
   deployAppToAKS:
     runs-on: ubuntu-latest
