@@ -3,7 +3,7 @@
 #           By: Yasmine Hines              #
 #            Date: 1/5/2023                #
 ############################################
-name: Build
+name: Build Docker Image
 
 on:
   push:
