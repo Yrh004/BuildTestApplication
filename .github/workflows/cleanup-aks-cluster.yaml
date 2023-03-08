@@ -1,0 +1,29 @@
+############################################
+#          Cleanup AKS Cluster             #
+#           By: Yasmine Hines              #
+#            Date: 1/5/2023                #
+############################################
+name: Cleanup
+
+on:
+  workflows_run:
+    workflows: [Deploy to AKS Cluster]
+    types: [completed]
+
+env: 
+  KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+
+jobs:  
+  cleanUp:
+    runs-on: ubuntu-latest
+    steps: 
+      - verifyApp
+        run: |
+          externalIP=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
+          port=$(kubectl describe service pythonrestapi-service | grep -i nodeport)
+          curl http://$externalIP:port
+
+      - name: Cleanup AKS Cluster
+        run: |
+          kubectl delete services pythonrestapi-service
+          kubectl delete deployment pythonrestapi-deploy
