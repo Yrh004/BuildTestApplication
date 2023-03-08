@@ -40,4 +40,4 @@ jobs:
 
       # Call the next workflow - Deploy App to AKS
   call-workflow:
-    uses: ./.github/workflows/deploy-app-aks.yaml@v1
+    uses: ./.github/workflows/deploy-app-aks.yaml
