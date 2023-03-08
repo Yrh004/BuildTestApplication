@@ -67,7 +67,7 @@ jobs:
           externalIp=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
           port=$(kubectl describe service pythonrestapi-service | grep -i targetport)
           sleep 30s
-          if [-z "$externalIP"] then { sleep 70s; else echo "http://$externalIP:80"; curl "http://$externalIP:80" }fi
+          if [ -z "$externalIP" ]; then { sleep 70s else echo "http://$externalIP:80" curl "http://$externalIP:80" }fi
 
       - name: verifyApp
         run: |
