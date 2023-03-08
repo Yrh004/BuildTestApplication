@@ -6,7 +6,7 @@
 name: Deploy
 
 on:
-  workflows_run:
+  workflow_run:
     workflows: [Build Docker Image]
     types: [completed]
 
