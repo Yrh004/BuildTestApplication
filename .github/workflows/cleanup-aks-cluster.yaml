@@ -21,8 +21,8 @@ jobs:
       - name: verifyApp
         run: |
           externalIP=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
-          port=$(kubectl describe service pythonrestapi-service | grep -i nodeport)
-          curl http://$externalIP:port
+          port=$(kubectl describe service pythonrestapi-service | grep -i targetport)
+          curl http://$externalIP
 
       - name: Cleanup AKS Cluster
         run: |
