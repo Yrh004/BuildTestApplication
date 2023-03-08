@@ -65,8 +65,9 @@ jobs:
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
           externalIp=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
-          sleep 100s
-          echo "http://$externalIP:80" 
+          sleep 70s
+          echo "http://$externalIp:80" 
+          curl "http://$externalIp:80" 
 
       - name: verifyApp
         run: |
@@ -76,4 +77,4 @@ jobs:
         run: |
           ${{ secrets.CONFIG }}
           kubectl delete services pythonrestapi-service
-          kubectl delete deployment pythonrestapi-deploy
+          kubectl delete deployment pythonrestapi-deployment
