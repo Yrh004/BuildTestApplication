@@ -6,9 +6,9 @@
 name: Build Docker Image
 
 on:
-  push:
-    branches:
-    - deployment
+  # push:
+  #   branches:
+  #   - deployment
   workflow_dispatch:
 
 jobs: 
@@ -62,9 +62,9 @@ jobs:
           curl "http://$externalIP:80"
 
   # Call the next workflow - Cleanup AKS Cluster
-  callWorkflowCleanup:
-    needs: buildAndDeploy
-    permissions:
-      contents: read
-      id-token: write
-    uses: Yrh004/BuildTestApplication/.github/workflows/cleanup-aks-cluster.yaml@deployment
+  # callWorkflowCleanup:
+  #   needs: buildAndDeploy
+  #   permissions:
+  #     contents: read
+  #     id-token: write
+  #   uses: Yrh004/BuildTestApplication/.github/workflows/cleanup-aks-cluster.yaml@deployment

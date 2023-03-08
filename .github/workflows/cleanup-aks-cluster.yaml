@@ -6,7 +6,10 @@
 name: Cleanup AKS Cluster
 
 on:
-  workflow_call:
+  push:
+    branches:
+    - deployment
+  # workflow_call:
 
 env: 
   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
@@ -32,5 +35,6 @@ jobs:
       - name: Cleanup AKS Cluster
         run: |
           ${{ secrets.CONFIG }}
-          kubectl delete services pythonrestapi-service
-          kubectl delete deployment pythonrestapi-deploy
+          kubectl cluster-info
+          # kubectl delete services pythonrestapi-service
+          # kubectl delete deployment pythonrestapi-deploy
