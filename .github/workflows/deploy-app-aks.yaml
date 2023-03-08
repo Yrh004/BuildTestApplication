@@ -48,4 +48,4 @@ jobs:
 
       # Call the next workflow - Cleanup AKS Cluster
   call-workflow:
-    uses: ${{ secrets.USERNAME }}/BuildTestApplication/.github/workflows/cleanup-aks-cluster.yaml@v1
+    uses: ./.github/workflows/cleanup-aks-cluster.yaml@v1
