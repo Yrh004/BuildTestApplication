@@ -13,9 +13,6 @@ env:
 
 jobs:  
   cleanUp:
-    permissions:
-      contents: read
-      id-token: write
     runs-on: ubuntu-latest
     steps: 
       - name: verifyApp
