@@ -3,7 +3,7 @@
 #           By: Yasmine Hines              #
 #            Date: 1/3/2023                #
 ############################################
-name: Build Docker Image
+name: Build Deploy and Cleanup
 
 on:
   push:
@@ -76,6 +76,5 @@ jobs:
       - name: Cleanup AKS Cluster
         run: |
           ${{ secrets.CONFIG }}
-          kubectl cluster-info
-          # kubectl delete services pythonrestapi-service
-          # kubectl delete deployment pythonrestapi-deploy
+          kubectl delete services pythonrestapi-service
+          kubectl delete deployment pythonrestapi-deploy
