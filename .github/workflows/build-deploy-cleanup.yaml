@@ -6,10 +6,15 @@
 name: Build Deploy and Cleanup
 
 on:
-  push:
-    branches:
-    - deployment
+  # push:
+  #   branches:
+  #   - deployment
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Demo'
+        default: 'Demo'
+        required: false
 
 jobs: 
   buildAndDeploy:
