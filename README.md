@@ -19,7 +19,7 @@
 ## Overview of tools used
 1. Python is a high-level, gernal-purpose programmin language.
 2. Terraform open-source infrastructure as code software tool enables you to safely and predicably create, change, and improve infrastructure.
-3. Azure Kubernetes Service simplifies deploying a managed Kubernetes cluster in Azure.
+3. Azure Kubernetes Service(AKS) simplifies deploying a managed Kubernetes cluster in Azure.
 4. GitHub Actions is a continuous integration and continuous delivery platform that allows you to automate your build, test, and deployment pipeline.
 5. VS Code is a source-code editor.
 
