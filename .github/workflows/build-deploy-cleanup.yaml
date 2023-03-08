@@ -31,7 +31,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       # Build the python app into a Docker image
-      - name: Build and push
+      - name: Build and push Docker Image
         uses: docker/build-push-action@v4
         with:
           context: .
@@ -47,8 +47,16 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+       # Install kubectl to use for deploying app to AKS
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.21.3'
+        id: install
+
       # Deploy Docker image in my AKS cluster
-      - uses: tale/kubectl-action@v1
+      - name: Deploy Docker Image
+        uses: tale/kubectl-action@v1
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
       - run: |
@@ -56,22 +64,14 @@ jobs:
           ${{ secrets.DIRECTORY }}
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
-          externalIP=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
+          externalIp=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
           port=$(kubectl describe service pythonrestapi-service | grep -i targetport)
-          sleep 90s
-          echo "http://$externalIP:80"
-          curl "http://$externalIP:80"
+          sleep 30s
+          if [-z "$externalIP"] then { sleep 70s; else echo "http://$externalIP:80"; curl "http://$externalIP:80" }fi
 
       - name: verifyApp
         run: |
           sleep 90s
-
-       # Install kubectl to use for deploying app to AKS
-      - name: Install kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: 'v1.21.3'
-        id: install
 
       - name: Cleanup AKS Cluster
         run: |
