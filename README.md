@@ -22,7 +22,7 @@
 # How it Run
 My python script has a GET request to my application and then my application return a JSON dump to the HTTP. My test case checks if the JSON dump contains 'Message". When it comes to building the Docker iamge of my app, I run the docker build and docker run command to verfiy that the Docker image actual returns the JSON.  
 
-1. ## Steps of the GitHub Actions Deployment
+## Steps of the GitHub Actions Deployment
   1. Log into Docker Hub
   1. Setup Docker Buildx
   1. Build and Push Docker Image
