@@ -6,7 +6,7 @@
 name: Cleanup
 
 on:
-  workflow_run:
+  workflow_call:
 
 env: 
   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}

@@ -47,5 +47,5 @@ jobs:
           sleep 45
 
       # Call the next workflow - Cleanup AKS Cluster
-      - call-workflow:
-        uses: BuildTestApplication/.github/workflows/cleanup-aks-cluster.yaml@v1
+  call-workflow:
+    uses: BuildTestApplication/.github/workflows/cleanup-aks-cluster.yaml@v1

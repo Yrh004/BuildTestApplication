@@ -39,5 +39,5 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/pythonrestapi:0.0.2
 
       # Call the next workflow - Deploy App to AKS
-      call-workflow:
-        uses: BuildTestApplication/.github/workflows/deploy-app-aks.yaml@v1
+  call-workflow:
+    uses: BuildTestApplication/.github/workflows/deploy-app-aks.yaml@v1
