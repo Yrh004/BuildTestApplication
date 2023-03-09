@@ -21,7 +21,7 @@
 2. Terraform open-source infrastructure as code software tool enables you to safely and predicably create, change, and improve infrastructure.
 3. Azure Kubernetes Service(AKS) simplifies deploying a managed Kubernetes cluster in Azure.
 4. GitHub Actions is a continuous integration and continuous delivery platform that allows you to automate your build, test, and deployment pipeline.
-5. VS Code is a source-code editor.
+5. Visual Studio Code is a source-code editor.
 
 # How it Run
 My python script has a GET request to my application and then my application return a JSON dump to the HTTP. My test case checks if the JSON dump contains 'Message". When it comes to building the Docker iamge of my app, I run the docker build and docker run command to verfiy that the Docker image actual returns the JSON.  
@@ -32,6 +32,7 @@ My python script has a GET request to my application and then my application ret
   1. Build and Push Docker Image
   1. Log into Azure
   1. Install kubectl
+  1. Set up Kube Config
   1. Deploy Docker Image
   1. Verify App
   1. Cleanup AKS Cluster
@@ -41,5 +42,5 @@ The runner cleans itself up from the steps/jobs I've created has ran, pass or fa
 
 # Tool Versions
 1. Python 3.11.2
-1. VS Code 1.76
+1. Visual Studio Code 1.76
 1. Terrform 1.3.9
