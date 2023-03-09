@@ -51,24 +51,26 @@ jobs:
           version: 'v1.21.3'
         id: install
 
-      # Deploy Docker image in my AKS cluster
-      - name: Deploy Docker Image
+      - name: Set up Kube Config
         uses: tale/kubectl-action@v1
         with:
           base64-kube-config: ${{ secrets.KUBE_CONFIG }}
-      - run: |
+
+      # Deploy Docker image in my AKS cluster
+      - name: Deploy Docker Image to AKS
+        run: |
           ${{ secrets.CONFIG }}
           ${{ secrets.DIRECTORY }}
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
-          sleep 45s
+          sleep 30s
           externalIp=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
           echo "http://$externalIp:80" 
           curl "http://$externalIp:80" 
 
       - name: verifyApp
         run: |
-          sleep 45s
+          sleep 30s
 
       - name: Cleanup AKS Cluster
         run: |
