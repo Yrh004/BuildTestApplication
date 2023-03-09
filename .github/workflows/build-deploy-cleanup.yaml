@@ -63,7 +63,7 @@ jobs:
           ${{ secrets.DIRECTORY }}
           kubectl apply -f pythonrestapi-deployment.yaml
           kubectl apply -f pythonrestapi-service.yaml
-          sleep 30s
+          sleep 50s
           externalIp=$(kubectl get svc pythonrestapi-service -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}")
           echo "http://$externalIp:80" 
           curl "http://$externalIp:80" 
